@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BigPanda - Test</title>
+	
+	<link rel="stylesheet" type="text/css" href="./app/css/main.css">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+</head>
+<body ng-app="bigPanda">
+
+<div class="app-wrapper" ng-controller="feedCtrl as feed">
+	<div class="form-section">
+		<input 	type="email"
+				class="form-control"
+				placeholder="Email" 
+				ng-model="feed.tempComment.email">
+		<textarea 	rows="3" 
+					class="form-control"
+					placeholder="Message" 
+					ng-model="feed.tempComment.comment"></textarea>
+		<div class="form-action">
+			<button type="button" ng-click="feed.addUser()" class="btn btn-info">SUBMIT</button>	
+		</div>
+	</div>
+	<div class="comments-section">
+	<div class="query-field">
+		<i class="fa fa-search"></i>
+		<input 	type="text" 
+					class="query-control" 
+					placeholder="Filter" 
+					ng-model="query">
+	</div>
+		<ul class="comments-list">
+			<li ng-repeat="feed in feed.comments | filter:query" class="col-md-12">
+				<user-card source="feed"></user-card>
+			</li>
+		</ul>
+	</div>	
+</div>
+
+<!-- Vendors -->
+<script src="./vendors/jquery/dist/jquery.js"></script>
+<script src="./vendors/angular/angular.js"></script>
+<script src="./vendors/angular-md5/angular-md5.js"></script>
+
+<!-- App -->
+<script src="./app/js/main.js"></script>
+<!-- Controllers -->
+<script src="./app/js/controllers/controllers.mdl.js"></script>
+<script src="./app/js/controllers/feed.ctrl.js"></script>
+<!-- Directives -->
+<script src="./app/js/directives/directives.mdl.js"></script>
+<script src="./app/js/directives/user.dir.js"></script>
+</body>
+</html>
